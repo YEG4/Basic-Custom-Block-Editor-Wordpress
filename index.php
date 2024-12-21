@@ -21,10 +21,12 @@
     }
 
     function adminAssets(){
-        wp_register_script('ournewblocktype',plugin_dir_url(__FILE__) . 'build/index.js', array('wp-blocks','wp-element'));
+        wp_register_style('quizeditcss',plugin_dir_url(__FILE__) . 'build/index.css');
+        wp_register_script('ournewblocktype',plugin_dir_url(__FILE__) . 'build/index.js', array('wp-blocks','wp-element', 'wp-editor'));
         /*  register_block_type(namespace that is used in javascript, array of options)*/
         register_block_type('ourplugin/custom-block', array(
             'editor_script' => 'ournewblocktype', // which javascript to load
+            'editor_style' => 'quizeditcss',
             'render_callback' => array($this, 'theHtml') // a function that's responsible for rendering HTML to the public on the frontend
         ));
 
